@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "expanded_crossbow_enchanting",
+  "version": "${version}",
+  "name": "Expanded Crossbow Enchanting",
+  "description": "This mod allows you to use Looting on a crossbow, all bow enchantments on a crossbow, and allows Piercing and Multishot to be on the same crossbow.",
+  "authors": [
+    "SmushyTaco"
+  ],
+  "contact": {
+    "homepage": "https://www.smushytaco.com/",
+    "issues": "https://www.curseforge.com/minecraft/mc-mods/expanded-crossbow-enchanting/issues/",
+    "sources": "https://github.com/SmushyTaco/Expanded-Crossbow-Enchanting/"
+  },
+  "license": "GNU Lesser General Public License version 3 (LGPLv3)",
+  "icon": "assets/expanded_crossbow_enchanting/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "com.smushytaco.expanded_crossbow_enchanting.ExpandedCrossbowEnchanting"
+      }
+    ],
+    "modmenu": [
+      "com.smushytaco.expanded_crossbow_enchanting.configuration_support.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "expanded_crossbow_enchanting.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabricloader}",
+    "fabric-api": ">=${fabric_api}",
+    "fabric-language-kotlin": ">=${fabric_language_kotlin}",
+    "minecraft": ">=${minecraft}",
+    "java": ">=${java}",
+    "cloth-config2": ">=${clothconfig}"
+  },
+  "suggests": {
+    "modmenu": ">=${modmenu}"
+  }
+}
