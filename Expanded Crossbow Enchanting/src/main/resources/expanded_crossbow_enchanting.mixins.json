@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.smushytaco.expanded_crossbow_enchanting.mixin",
+  "compatibilityLevel": "JAVA_${java}",
+  "mixins": [
+    "CrossbowModification"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
