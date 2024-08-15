@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import java.util.Set;
 @Mixin(Enchantment.class)
 public abstract class CrossbowModification {
     @ModifyReturnValue(method = "isAcceptableItem", at = @At("RETURN"))
@@ -32,5 +33,5 @@ public abstract class CrossbowModification {
         return original;
     }
     @ModifyReturnValue(method = "canBeCombined", at = @At("RETURN"))
-    private static boolean hookCanBeCombined(boolean original, RegistryEntry<Enchantment> first, RegistryEntry<Enchantment> second) { return ExpandedCrossbowEnchanting.INSTANCE.getConfig().getPiercingAndMultishotCanBeMixed() && (first.matchesKey(Enchantments.PIERCING) && second.matchesKey(Enchantments.MULTISHOT) || first.matchesKey(Enchantments.MULTISHOT) && second.matchesKey(Enchantments.PIERCING)) || original; }
+    private static boolean hookCanBeCombined(boolean original, RegistryEntry<Enchantment> first, RegistryEntry<Enchantment> second) { return original || ExpandedCrossbowEnchanting.INSTANCE.getConfig().getPiercingAndMultishotCanBeMixed() && ExpandedCrossbowEnchanting.INSTANCE.canCombineEnchantments(first, second, Set.of(Enchantments.MULTISHOT, Enchantments.PIERCING)); }
 }
