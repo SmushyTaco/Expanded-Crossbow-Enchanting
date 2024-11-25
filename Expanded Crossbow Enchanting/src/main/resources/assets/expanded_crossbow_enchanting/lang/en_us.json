@@ -1,9 +1,9 @@
 {
-  "text.autoconfig.expanded_crossbow_enchanting.title": "Expanded Crossbow Enchanting Configuration",
-  "text.autoconfig.expanded_crossbow_enchanting.option.piercingAndMultishotCanBeMixed": "Piercing And Multishot Can Be Mixed",
-  "text.autoconfig.expanded_crossbow_enchanting.option.canUseLootingOnCrossbow": "Can Use Looting On Crossbow",
-  "text.autoconfig.expanded_crossbow_enchanting.option.canUseInfinityOnCrossbow": "Can Use Infinity On Crossbow",
-  "text.autoconfig.expanded_crossbow_enchanting.option.canUseFlameOnCrossbow": "Can Use Flame On Crossbow",
-  "text.autoconfig.expanded_crossbow_enchanting.option.canUsePowerOnCrossbow": "Can Use Power On Crossbow",
-  "text.autoconfig.expanded_crossbow_enchanting.option.canUsePunchOnCrossbow": "Can Use Punch On Crossbow"
+  "text.config.expanded_crossbow_enchanting.title": "Expanded Crossbow Enchanting Configuration",
+  "text.config.expanded_crossbow_enchanting.option.piercingAndMultishotCanBeMixed": "Piercing And Multishot Can Be Mixed",
+  "text.config.expanded_crossbow_enchanting.option.canUseLootingOnCrossbow": "Can Use Looting On Crossbow",
+  "text.config.expanded_crossbow_enchanting.option.canUseInfinityOnCrossbow": "Can Use Infinity On Crossbow",
+  "text.config.expanded_crossbow_enchanting.option.canUseFlameOnCrossbow": "Can Use Flame On Crossbow",
+  "text.config.expanded_crossbow_enchanting.option.canUsePowerOnCrossbow": "Can Use Power On Crossbow",
+  "text.config.expanded_crossbow_enchanting.option.canUsePunchOnCrossbow": "Can Use Punch On Crossbow"
 }
