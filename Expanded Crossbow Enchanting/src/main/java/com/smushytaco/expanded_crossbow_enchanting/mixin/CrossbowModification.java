@@ -1,17 +1,17 @@
 package com.smushytaco.expanded_crossbow_enchanting.mixin;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.smushytaco.expanded_crossbow_enchanting.ExpandedCrossbowEnchanting;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.CrossbowItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.core.Holder;
+import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import java.util.Set;
 @Mixin(Enchantment.class)
 public abstract class CrossbowModification {
-    @ModifyReturnValue(method = "isAcceptableItem", at = @At("RETURN"))
+    @ModifyReturnValue(method = "canEnchant", at = @At("RETURN"))
     public boolean hookIsAcceptableItem(boolean original, ItemStack stack) {
         Enchantment enchantment = (Enchantment) (Object) this;
         if (ExpandedCrossbowEnchanting.INSTANCE.isSameEnchantment(enchantment, Enchantments.LOOTING)) {
@@ -32,6 +32,6 @@ public abstract class CrossbowModification {
         }
         return original;
     }
-    @ModifyReturnValue(method = "canBeCombined", at = @At("RETURN"))
-    private static boolean hookCanBeCombined(boolean original, RegistryEntry<Enchantment> first, RegistryEntry<Enchantment> second) { return original || ExpandedCrossbowEnchanting.INSTANCE.getConfig().getPiercingAndMultishotCanBeMixed() && ExpandedCrossbowEnchanting.INSTANCE.canCombineEnchantments(first, second, Set.of(Enchantments.MULTISHOT, Enchantments.PIERCING)); }
+    @ModifyReturnValue(method = "areCompatible", at = @At("RETURN"))
+    private static boolean hookCanBeCombined(boolean original, Holder<Enchantment> first, Holder<Enchantment> second) { return original || ExpandedCrossbowEnchanting.INSTANCE.getConfig().getPiercingAndMultishotCanBeMixed() && ExpandedCrossbowEnchanting.INSTANCE.canCombineEnchantments(first, second, Set.of(Enchantments.MULTISHOT, Enchantments.PIERCING)); }
 }
