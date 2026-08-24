@@ -12,26 +12,26 @@ import java.util.Set;
 @Mixin(Enchantment.class)
 public abstract class CrossbowModification {
     @ModifyReturnValue(method = "canEnchant", at = @At("RETURN"))
-    public boolean hookIsAcceptableItem(boolean original, ItemStack stack) {
+    public boolean hookIsAcceptableItem(boolean original, ItemStack itemStack) {
         Enchantment enchantment = (Enchantment) (Object) this;
         if (ExpandedCrossbowEnchanting.INSTANCE.isSameEnchantment(enchantment, Enchantments.LOOTING)) {
-            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUseLootingOnCrossbow() || !(stack.getItem() instanceof CrossbowItem)) return original;
+            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUseLootingOnCrossbow() || !(itemStack.getItem() instanceof CrossbowItem)) return original;
             return true;
         } else if (ExpandedCrossbowEnchanting.INSTANCE.isSameEnchantment(enchantment, Enchantments.INFINITY)) {
-            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUseInfinityOnCrossbow() || !(stack.getItem() instanceof CrossbowItem)) return original;
+            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUseInfinityOnCrossbow() || !(itemStack.getItem() instanceof CrossbowItem)) return original;
             return true;
         } else if (ExpandedCrossbowEnchanting.INSTANCE.isSameEnchantment(enchantment, Enchantments.FLAME)) {
-            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUseFlameOnCrossbow() || !(stack.getItem() instanceof CrossbowItem)) return original;
+            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUseFlameOnCrossbow() || !(itemStack.getItem() instanceof CrossbowItem)) return original;
             return true;
         } else if (ExpandedCrossbowEnchanting.INSTANCE.isSameEnchantment(enchantment, Enchantments.POWER)) {
-            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUsePowerOnCrossbow() || !(stack.getItem() instanceof CrossbowItem)) return original;
+            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUsePowerOnCrossbow() || !(itemStack.getItem() instanceof CrossbowItem)) return original;
             return true;
         } else if (ExpandedCrossbowEnchanting.INSTANCE.isSameEnchantment(enchantment, Enchantments.PUNCH)) {
-            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUsePunchOnCrossbow() || !(stack.getItem() instanceof CrossbowItem)) return original;
+            if (!ExpandedCrossbowEnchanting.INSTANCE.getConfig().getCanUsePunchOnCrossbow() || !(itemStack.getItem() instanceof CrossbowItem)) return original;
             return true;
         }
         return original;
     }
     @ModifyReturnValue(method = "areCompatible", at = @At("RETURN"))
-    private static boolean hookCanBeCombined(boolean original, Holder<Enchantment> first, Holder<Enchantment> second) { return original || ExpandedCrossbowEnchanting.INSTANCE.getConfig().getPiercingAndMultishotCanBeMixed() && ExpandedCrossbowEnchanting.INSTANCE.canCombineEnchantments(first, second, Set.of(Enchantments.MULTISHOT, Enchantments.PIERCING)); }
+    private static boolean hookCanBeCombined(boolean original, Holder<Enchantment> enchantment, Holder<Enchantment> other) { return original || ExpandedCrossbowEnchanting.INSTANCE.getConfig().getPiercingAndMultishotCanBeMixed() && ExpandedCrossbowEnchanting.INSTANCE.canCombineEnchantments(enchantment, other, Set.of(Enchantments.MULTISHOT, Enchantments.PIERCING)); }
 }
